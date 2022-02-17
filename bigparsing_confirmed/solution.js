@@ -1,7 +1,16 @@
 import * as fs from "fs";
+import {fileURLToPath} from "url";
+import {dirname} from "path";
+import * as path from "path";
 
-// this function allow to read dynamically
-let stream = fs.createReadStream('./input.json', 'utf8');
+// this allows to retrieve the file dynamically
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename)
+const baseUrlLink = path.join(__dirname, "input.json");
+
+
+// this function allow to read the file dynamically
+let stream = fs.createReadStream(baseUrlLink, 'utf8');
 
 // we initialize a buffer to store each json object
 let buf = '';
