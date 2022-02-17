@@ -5,7 +5,7 @@ import * as path from "path";
 
 // this allows to retrieve the file dynamically
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename)
+const __dirname = dirname(__filename);
 const baseUrlLink = path.join(__dirname, "input.json");
 
 
@@ -14,10 +14,10 @@ let stream = fs.createReadStream(baseUrlLink, 'utf8');
 
 // we initialize a buffer to store each json object
 let buf = '';
-let isSaving = false
+let isSaving = false;
 
 // id from the command line
-let id = process.argv[2]
+let id = process.argv[2];
 
 
 /**
@@ -47,10 +47,10 @@ stream.on('data',  (chunk)=>{
         }
         if(bit === '}') { // meaning that the json object is full
             isSaving = false;
-            const objBuf = JSON.parse(buf)
+            const objBuf = JSON.parse(buf);
             getNameFromId(id, objBuf);
             // initializing the buf for the next object
             buf = '';
         }
-    })
-})
+    });
+});
